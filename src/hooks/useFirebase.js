@@ -24,16 +24,16 @@ const useFireBase = () => {
         );
     }, [])
 
-    // const emailHandle = e => {
-    //     setEmail(e.target.value);
-    // }
-    // const passwordHandle = p => {
-    //     setPassword(p.target.value);
-    // }
+    const emailHandle = e => {
+        setEmail(e.target.value);
+    }
+    const passwordHandle = p => {
+        setPassword(p.target.value);
+    }
 
-    // const nameHandle = n => {
-    //     setDisplayName(n.target.value);
-    // }
+    const nameHandle = n => {
+        setDisplayName(n.target.value);
+    }
 
     const handleGoogleSignIn = () => {
         setIsLoading(true)
@@ -42,22 +42,21 @@ const useFireBase = () => {
         return signInWithPopup(auth, provider);
     }
 
-    // const signinUsingGithub = () => {
-    //     const provider = new GithubAuthProvider();
-    //     const auth = getAuth();
-    //     return signInWithPopup(auth, provider)
-    // }
+    const signinUsingGithub = () => {
+        const provider = new GithubAuthProvider();
+        const auth = getAuth();
+        return signInWithPopup(auth, provider)
+    }
 
-    // const logOut = () => {
-    //     const auth = getAuth();
-    //     signOut(auth).then(() => {
-    //         setUser({})
-    //     }).catch((error) => {
-    //     });
-    // }
+    const logOut = () => {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            setUser({})
+        }).catch((error) => {
+        });
+    }
 
-    // return { isLoading, setIsLoading, displayName, handleGoogleSignIn, signinUsingGithub, emailHandle, passwordHandle, nameHandle, logOut, user, error, email, password, setError };
-    return { isLoading, setIsLoading, displayName, handleGoogleSignIn, user, error, email, password, setError };
-};
+    return { isLoading, setIsLoading, displayName, handleGoogleSignIn, signinUsingGithub, emailHandle, passwordHandle, nameHandle, logOut, user, error, email, password, setError };
+   };
 
 export default useFireBase;
