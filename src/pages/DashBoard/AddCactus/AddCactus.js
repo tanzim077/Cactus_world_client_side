@@ -25,49 +25,56 @@ const AddCactus = () => {
     }
 
     return (
-        <div className="container p-4 ">
-            <form className="col-lg-6 d-flex mx-auto flex-column gap-2" onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group row">
-                    <label className="col-sm-4 col-form-label"> Item Name </label>
-                    <div className="col-sm-8">
-                        <input className="form-control" placeholder="Item Name" {...register("itemName", { required: true })} />
-                    </div>
+        <div className="d-flex">
+            <div>
+
+            </div>
+            <div style={{width:'100%'}}>
+                <div className="container p-4 ">
+                    <form className="col-lg-6 d-flex mx-auto flex-column gap-2" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-group row">
+                            <label className="col-sm-4 col-form-label"> Item Name </label>
+                            <div className="col-sm-8">
+                                <input className="form-control" placeholder="Item Name" {...register("itemName", { required: true })} />
+                            </div>
+                        </div>
+
+                        <div className="form-group row">
+                            <label className="col-sm-4 col-form-label"> ImageURL </label>
+                            <div className="col-sm-8">
+                                <input className="form-control" placeholder="ImageURL" {...register("image", { required: true })} />
+                            </div>
+                        </div>
+
+
+                        <div className="form-group row">
+                            <label className="col-sm-4 col-form-label"> Item Price </label>
+                            <div className="col-sm-8">
+                                <input className="form-control" placeholder="Item Price" {...register("price", { required: true })} />
+                            </div>
+                        </div>
+
+
+                        <div className="form-group row">
+                            <label className="col-sm-4 col-form-label"> Description </label>
+                            <div className="col-sm-8">
+                                <input className="form-control" placeholder="description" {...register("description", { required: false })} />
+                            </div>
+                        </div>
+
+                        <div className="form-group row">
+                            <label className="col-sm-4 col-form-label"> Origin </label>
+                            <div className="col-sm-8">
+                                <input className="form-control" placeholder="Origin" {...register("origin", { required: false })} />
+                            </div>
+                        </div>
+
+                        {errors.exampleRequired && <span className="text-danger">This field is required</span>}
+                        <Button className="" variant="primary" type="submit">Add</Button>
+
+                    </form>
                 </div>
-
-                <div className="form-group row">
-                    <label className="col-sm-4 col-form-label"> ImageURL </label>
-                    <div className="col-sm-8">
-                        <input className="form-control" placeholder="ImageURL" {...register("image", { required: true })} />
-                    </div>
-                </div>
-
-
-                <div className="form-group row">
-                    <label className="col-sm-4 col-form-label"> Item Price </label>
-                    <div className="col-sm-8">
-                        <input className="form-control" placeholder="Item Price" {...register("price", { required: true })} />
-                    </div>
-                </div>
-
-
-                <div className="form-group row">
-                    <label className="col-sm-4 col-form-label"> Description </label>
-                    <div className="col-sm-8">
-                        <input className="form-control" placeholder="description" {...register("description", { required: false })} />
-                    </div>
-                </div>
-
-                <div className="form-group row">
-                    <label className="col-sm-4 col-form-label"> Origin </label>
-                    <div className="col-sm-8">
-                        <input className="form-control" placeholder="Origin" {...register("origin", { required: false })} />
-                    </div>
-                </div>
-
-                {errors.exampleRequired && <span className="text-danger">This field is required</span>}
-                <Button className="" variant="primary" type="submit">Add</Button>
-
-            </form>
+            </div>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import useOrdersData from '../../hooks/useOrdersData';
+import MenuBar from '../Shared/MenuBar/MenuBar';
 
 
 const MyOrders = () => {
@@ -32,6 +33,7 @@ const MyOrders = () => {
     }
     return (
         <div>
+            <MenuBar/>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>

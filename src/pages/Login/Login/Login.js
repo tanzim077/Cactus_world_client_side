@@ -2,6 +2,7 @@ import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import MenuBar from '../../Shared/MenuBar/MenuBar';
 import OtherButtons from '../../Shared/OtherButtons/OtherButtons';
 
 const LogIn = () => {
@@ -28,6 +29,7 @@ const LogIn = () => {
 
     return (
         <div>
+            <MenuBar/>
             <div className="mx-3 myform">
                 <form onSubmit={handleLogin}>
                     <div className="col-lg-3 mx-auto myform">

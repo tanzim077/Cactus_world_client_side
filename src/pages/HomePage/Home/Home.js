@@ -1,11 +1,12 @@
 import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
+import MenuBar from '../../Shared/MenuBar/MenuBar';
 import CactusItems from '../CactusItems/CactusItems/CactusItems';
 
 const Home = () => {
     return (
         <div>
-            <h1>Hello From HomePage</h1>
+           <MenuBar/>
             <CactusItems />
             <Footer />
         </div>
