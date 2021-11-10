@@ -1,27 +1,35 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './SingleEvent.css'
+import './SingleCactus.css';
 
 const SingleCactus = (props) => {
-    const { _id, eventName, image, from, destination, description, cost, start_date, end_date } = props.singledata;
+    const { _id, itemName, image, price, origin, description } = props.singledata;
 
     return (
-        <div className=" eventName col-lg-4 p-2">
-            <Card className="p-2" style={{ width: '22rem', height: '30em' }}>
-                <Card.Img style={{ width: '100%', height: '12rem' }} src={image} />
-                <Card.Body>
-                    <Card.Title className="big">{eventName}</Card.Title>
-                    <Card.Text className="small" ><i class="fas event-icon fa-map-marker-alt"></i> &nbsp; {from} to {destination} &nbsp; <i class="fas event-icon fa-flag-checkered"></i></Card.Text>
-                    <Card.Text><i class="far event-icon fa-calendar-alt"></i>  &nbsp; {start_date} to  {end_date}</Card.Text>
-                    <Card.Text className="description">{description.slice(0, 100)}....</Card.Text>
-                    <div className="d-flex justify-content-between">
-                        <Link to={`/eventdetails/${_id}`}><Button className="confirm"><i class="fas event-icon fa-calendar-plus">&nbsp;</i> Confirm Schedule</Button></Link>
-                        <Card.Text className="cost my-auto"> <h4>{cost} ৳</h4> </Card.Text>
-
+        <div className="container col-lg-4" style={{ margin: "25px 0" }}>
+            <div className="">
+                <div className="card-sl">
+                    <div className="card-image">
+                        <img style={{ width: '100%', height: '16rem' }} src={image} />
                     </div>
-                </Card.Body>
-            </Card>
+
+                    <a className="card-action" href="#"><i className="fa fa-heart"></i></a>
+                    <div className="card-heading">
+                        {itemName}
+                    </div>
+                    <div className="card-text">
+                        {origin}
+                    </div>
+                    <div className="card-text">
+                        {description}
+                    </div>
+                    <div className="card-text">
+                        {price}
+                    </div>
+                    <Link to={`/itemdetails/${_id}`}><a href="#" className="card-button"> Purchase</a></Link>
+                </div>
+            </div>
         </div>
     );
 };

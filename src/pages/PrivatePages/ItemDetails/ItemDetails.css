@@ -1,0 +1,19 @@
+.item-title {
+    flex: 0.5;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.item-image {
+    align-content: center;
+    margin: 15%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 70%;
+    margin-top: 10px;
+}
+.custom-1 {
+    color: rgb(187, 60, 10)
+}

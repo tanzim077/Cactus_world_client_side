@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Button, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import useOrdersData from '../../hooks/useOrdersData';
+
+
+const MyOrders = () => {
+    const [data, setData] = useOrdersData([]);
+
+    const { user } = useAuth();
+    const userMail = user.email;
+
+    var i = 0;
+
+
+    const myOrder = data.filter(d => d.userEmail == userMail)
+
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm("Are you sure to delete?")
+        if (proceed) {
+            axios.delete(`http://localhost:8080/orders/${id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        const remainingOrders = data.filter(d => d._id !== id)
+                        setData(remainingOrders);
+                    }
+                })
+        }
+    }
+    return (
+        <div>
+            <Table striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Item Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        myOrder.map(d =>
+                            <tr>
+                                <td>{++i}</td>
+                                <td>{d.userName}</td>
+                                <td>{d.userEmail}</td>
+                                <td>{d.userPhone}</td>
+                                <td>{d.userAddress}</td>
+                                <td>{d.itemName}</td>
+                                <td>{d.price}</td>
+                                {
+                                    (d.userStatus === "pending") ?
+                                        <td>Pending</td> :
+                                        <td>Confirmed</td>
+                                }
+                                <td>
+                                    <Link to={`/orderupdate/${d._id}`}><Button variant="warning">Update</Button></Link>
+                                </td>
+                                <td><Button onClick={() => handleDelete(d._id)} variant="danger">Delete</Button></td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </Table>
+        </div>
+    );
+};
+
+export default MyOrders;
+

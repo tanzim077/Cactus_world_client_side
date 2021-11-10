@@ -1,12 +1,12 @@
 import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
-import CactusSection from '../CactusSection/CactusSection';
+import CactusItems from '../CactusItems/CactusItems/CactusItems';
 
 const Home = () => {
     return (
         <div>
             <h1>Hello From HomePage</h1>
-            <CactusSection />
+            <CactusItems />
             <Footer />
         </div>
     );

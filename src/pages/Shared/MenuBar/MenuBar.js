@@ -26,9 +26,10 @@ const MenuBar = () => {
                                         <Link to="/home"><Nav.Link href="home">Home</Nav.Link></Link>
                                         <Link to="/cactuses"><Nav.Link href="events">Cactuses</Nav.Link></Link>
                                         <Link to="/myorder"><Nav.Link href="schedule">My Order</Nav.Link></Link>
-                                        <NavDropdown title="Admin" id="collasible-nav-dropdown">
+                                        <Link to="/dashboard"><Nav.Link href="dashboard">My DashBoard</Nav.Link></Link>
+                                        <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
                                             <Link to="/addcactus"><NavDropdown.Item href="addcactus">Add a Cactus</NavDropdown.Item></Link>
-                                            <Link to="/cactuseslist"><NavDropdown.Item href="cactuseslist">All Cactuses</NavDropdown.Item></Link>
+                                            <Link to="/itemslist"><NavDropdown.Item href="itemslist">All Cactuses</NavDropdown.Item></Link>
                                             <Link to="/orderslist"><NavDropdown.Item href="orderslist">All Orders</NavDropdown.Item></Link>
                                         </NavDropdown>
                                     </Nav>
