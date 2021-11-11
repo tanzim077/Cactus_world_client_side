@@ -32,8 +32,7 @@ const MyOrders = () => {
         }
     }
     return (
-        <div>
-            <MenuBar/>
+        <div style={{width: '100%'}}>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>

@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from '@firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import MenuBar from '../Shared/MenuBar/MenuBar';
@@ -7,31 +7,35 @@ import OtherButtons from '../Shared/OtherButtons/OtherButtons';
 
 
 const Signup = () => {
-    const { displayName, error, email, password, nameHandle, emailHandle, passwordHandle, setError } = useAuth()
-
-    const auth = getAuth();
+    const { error, registerUser } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const redirect_URL = location.state?.from || '/home';
 
+    const [loginData, setLoginData] = useState({});
+
+
+    const emailHandle = e => {
+        const newLoginData = { ...loginData };
+        newLoginData.email = e.target.value
+        setLoginData(newLoginData);
+    }
+
+    const passwordHandle = p => {
+        const newLoginData = { ...loginData };
+        newLoginData.password = p.target.value
+        setLoginData(newLoginData);
+    }
+
+    const nameHandle = n => {
+        const newLoginData = { ...loginData };
+        newLoginData.name = n.target.value
+        setLoginData(newLoginData);
+    }
 
 
     const handleSignUp = (e) => {
+        registerUser(loginData.email, loginData.password, loginData.name, location, history);
         e.preventDefault();
-        if (password.length < 6) {
-            setError("password should be at least 6 characters");
-            return false;
-        }
-        setError('')
-        createUserWithEmailAndPassword(auth, email, password, displayName)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                history.push(redirect_URL)
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setError(errorMessage)
-            });
     }
 
     return (

@@ -19,7 +19,7 @@ const ItemDetails = () => {
         const orderData = { ...data, userStatus, price, description, itemName, image, origin }
         axios.post('http://localhost:8080/orders/create', orderData)
             .then(alert("Inserted successfully"))
-            .then(history.push('/myorder'))
+            .then(history.push('/cactuses'))
     }
 
     useEffect(() => {

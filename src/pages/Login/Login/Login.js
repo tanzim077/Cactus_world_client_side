@@ -1,29 +1,47 @@
 import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import MenuBar from '../../Shared/MenuBar/MenuBar';
 import OtherButtons from '../../Shared/OtherButtons/OtherButtons';
 
 const LogIn = () => {
-    const { email, password, emailHandle, passwordHandle, error, setError } = useAuth();
+    const { loginUser, error } = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_URL = location.state?.from || '/home';
+    const [loginData, setLoginData] = useState({});
 
-    const handleLogin = (e) => {
+    // const handleLogin = (e) => {
+    //     e.preventDefault();
+    //     const auth = getAuth();
+    //     signInWithEmailAndPassword(auth, email, password)
+    //         .then((userCredential) => {
+    //             const user = userCredential.user;
+    //             history.push(redirect_URL);
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             setError(errorMessage)
+    //         });
+    // }
+
+    const emailHandle = e => {
+        const newLoginData = { ...loginData };
+        newLoginData.email = e.target.value
+        setLoginData(newLoginData);
+    }
+
+    const passwordHandle = p => {
+        const newLoginData = { ...loginData };
+        newLoginData.password = p.target.value
+        setLoginData(newLoginData);
+    }
+
+    const handleLogin = e => {
+        loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                history.push(redirect_URL);
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setError(errorMessage)
-            });
     }
 
 

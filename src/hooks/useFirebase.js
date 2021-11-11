@@ -1,17 +1,17 @@
-import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import axios from "axios";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
 import initializedApp from '../pages/Login/Firebase/initializedApp'
 
 initializedApp();
 
 const useFireBase = () => {
-    const [user, setUser] = useState({});
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [displayName, setDisplayName] = useState('');
+
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-
+    const [user, setUser] = useState({});
+    const [admin, setAdmin] = useState(false);
+    const googleProvider = new GoogleAuthProvider();
     const auth = getAuth();
 
     useEffect(() => {
@@ -24,29 +24,80 @@ const useFireBase = () => {
         );
     }, [])
 
-    const emailHandle = e => {
-        setEmail(e.target.value);
-    }
-    const passwordHandle = p => {
-        setPassword(p.target.value);
+    useEffect(() => {
+        axios.get(`http://localhost:8080/users/${user.email}`)
+            .then(data => setAdmin(data.data.admin))
+    }, [user.email])
+
+   
+    const loginUser = (email, password, location, history) => {
+        setIsLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setError('');
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => setIsLoading(false));
     }
 
-    const nameHandle = n => {
-        setDisplayName(n.target.value);
+
+    // Need to customize
+    // Registration through form 
+    const registerUser = (email, password, name, location, history) => {
+        setIsLoading(true);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                setError('');
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // save user to the database
+                saveUser(email, name, 'post');
+                // send name to firebase after creation
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                }).catch((error) => {
+                });
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => setIsLoading(false));
+    }
+  
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        if (method === 'post') {
+            axios.post('http://localhost:8080/users/create', user)
+        }
+        else if (method === 'put') {
+            axios.put('http://localhost:8080/users/create', user)
+        }
+
     }
 
-    const handleGoogleSignIn = () => {
-        setIsLoading(true)
-        const provider = new GoogleAuthProvider();
-        const auth = getAuth();
-        return signInWithPopup(auth, provider);
+    // Need to customize
+    const handleGoogleSignIn = (location, history) => {
+        setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'put');
+                setError('');                  
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+            })
+            .catch((error) => {
+                setError(error.message);
+            }).finally(() => setIsLoading(false));
     }
 
-    const signinUsingGithub = () => {
-        const provider = new GithubAuthProvider();
-        const auth = getAuth();
-        return signInWithPopup(auth, provider)
-    }
 
     const logOut = () => {
         const auth = getAuth();
@@ -56,7 +107,7 @@ const useFireBase = () => {
         });
     }
 
-    return { isLoading, setIsLoading, displayName, handleGoogleSignIn, signinUsingGithub, emailHandle, passwordHandle, nameHandle, logOut, user, error, email, password, setError };
-   };
+    return {admin, isLoading, registerUser, setIsLoading, handleGoogleSignIn, logOut, loginUser, user, error, setError };
+};
 
 export default useFireBase;

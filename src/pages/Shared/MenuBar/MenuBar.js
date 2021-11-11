@@ -25,7 +25,6 @@ const MenuBar = () => {
                                     >
                                         <Link to="/home"><Nav.Link href="home">Home</Nav.Link></Link>
                                         <Link to="/cactuses"><Nav.Link href="events">Cactuses</Nav.Link></Link>
-                                        <Link to="/myorder"><Nav.Link href="schedule">My Order</Nav.Link></Link>
                                         <Link to="/dashboard"><Nav.Link href="dashboard">DashBoard</Nav.Link></Link>
                                     </Nav>
                                 </Navbar.Collapse>
