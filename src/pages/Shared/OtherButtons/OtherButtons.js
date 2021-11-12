@@ -11,10 +11,14 @@ const OtherButtons = (props) => {
     const location = useLocation();
     const history = useHistory();
 
-    const handleGoogle = () => {
-        handleGoogleSignIn(history, location);
-    }
+    console.log("History ")
+    console.log(history);
+    console.log("Location");
+    console.log(location);
 
+    const handleGoogle = () => {
+        handleGoogleSignIn(location, history);
+    }
 
     return (
         <div className="">

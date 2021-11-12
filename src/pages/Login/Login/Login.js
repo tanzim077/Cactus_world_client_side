@@ -12,6 +12,11 @@ const LogIn = () => {
     const redirect_URL = location.state?.from || '/home';
     const [loginData, setLoginData] = useState({});
 
+    // console.log("History ")
+    // console.log(history);
+    // console.log("Location");
+    // console.log(location);
+
     // const handleLogin = (e) => {
     //     e.preventDefault();
     //     const auth = getAuth();

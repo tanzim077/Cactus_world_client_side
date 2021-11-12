@@ -8,6 +8,7 @@ import OtherButtons from '../Shared/OtherButtons/OtherButtons';
 
 const Signup = () => {
     const { error, registerUser } = useAuth();
+   
     const location = useLocation();
     const history = useHistory();
 

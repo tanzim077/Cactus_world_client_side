@@ -16,6 +16,8 @@ import ItemsList from '../ItemsList/ItemsList';
 import OrdersList from '../OrdersList/OrdersList';
 import MyOrders from '../../MyOrders/MyOrders';
 import useAuth from '../../../hooks/useAuth';
+import Payment from '../Payment/Payment';
+import Review from '../Review/Review';
 
 const DashBoard = () => {
 
@@ -29,18 +31,18 @@ const DashBoard = () => {
                     <nav id="navbar" className="nav-menu navbar">
                         <ul>
                             <Link to="/home"><Nav.Link href="home">Home</Nav.Link></Link>
-
-                            <Link to={`${url}/review`}><NavDropdown.Item href="reviews">Reviews</NavDropdown.Item></Link>
                             {!admin ?
                                 <>
                                     <Link to={`${url}/myorders`}><NavDropdown.Item href="myorders">My Orders</NavDropdown.Item></Link>
-                                    <Link to="/payment"><NavDropdown.Item href="payment">Payment</NavDropdown.Item></Link>
+                                    <Link to={`${url}/payment`}><NavDropdown.Item href="payment">Payment</NavDropdown.Item></Link>
+                                    <Link to={`${url}/review`}><NavDropdown.Item href="reviews">Reviews</NavDropdown.Item></Link>
+
                                 </>
                                 :
                                 <>
                                     <Link to={`${url}/makeadmin`}><NavDropdown.Item href="makeadmin">Make Admin</NavDropdown.Item></Link>
-                                    <Link to={`${url}/addcactus`}><NavDropdown.Item href="addcactus">Add a Cactus</NavDropdown.Item></Link>
-                                    <Link to={`${url}/itemslist`}><NavDropdown.Item href="itemslist">All Cactuses</NavDropdown.Item></Link>
+                                    <Link to={`${url}/addcactus`}><NavDropdown.Item href="addcactus">Add an Item</NavDropdown.Item></Link>
+                                    <Link to={`${url}/itemslist`}><NavDropdown.Item href="itemslist">All Items</NavDropdown.Item></Link>
                                     <Link to={`${url}/orderslist`}><NavDropdown.Item href="orderslist">All Orders</NavDropdown.Item></Link>
                                 </>
                             }
@@ -54,8 +56,14 @@ const DashBoard = () => {
                 <Route exact path={path}>
                     <DashBoardHome />
                 </Route>
+                <Route path={`${path}/review`}>
+                    <Review />
+                </Route>
                 <Route exact path={`${path}/myorders`}>
                     <MyOrders />
+                </Route>
+                <Route exact path={`${path}/payment`}>
+                    <Payment />
                 </Route>
                 <AdminRoute path={`${path}/addcactus`}>
                     <AddCactus />
@@ -65,9 +73,6 @@ const DashBoard = () => {
                 </AdminRoute>
                 <AdminRoute path={`${path}/orderslist`}>
                     <OrdersList />
-                </AdminRoute>
-                <AdminRoute path={`${path}/review`}>
-                    <MakeAdmin />
                 </AdminRoute>
                 <AdminRoute path={`${path}/makeAdmin`}>
                     <MakeAdmin />

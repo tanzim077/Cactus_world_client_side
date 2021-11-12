@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from 'react';
+import { useHistory } from "react-router";
 import initializedApp from '../pages/Login/Firebase/initializedApp'
 
 initializedApp();
@@ -29,7 +30,8 @@ const useFireBase = () => {
             .then(data => setAdmin(data.data.admin))
     }, [user.email])
 
-   
+    // console.log(user);
+
     const loginUser = (email, password, location, history) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
@@ -43,7 +45,22 @@ const useFireBase = () => {
             })
             .finally(() => setIsLoading(false));
     }
-
+    // Need to customize
+    const handleGoogleSignIn = (location, history) => {
+        setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'put');
+                setError('');
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setError('');
+            })
+            .catch((error) => {
+                setError(error.message);
+            }).finally(() => setIsLoading(false));
+    }
 
     // Need to customize
     // Registration through form 
@@ -70,7 +87,7 @@ const useFireBase = () => {
             })
             .finally(() => setIsLoading(false));
     }
-  
+
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
         if (method === 'post') {
@@ -82,21 +99,7 @@ const useFireBase = () => {
 
     }
 
-    // Need to customize
-    const handleGoogleSignIn = (location, history) => {
-        setIsLoading(true);
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const user = result.user;
-                saveUser(user.email, user.displayName, 'put');
-                setError('');                  
-                const destination = location?.state?.from || '/';
-                history.replace(destination);
-            })
-            .catch((error) => {
-                setError(error.message);
-            }).finally(() => setIsLoading(false));
-    }
+
 
 
     const logOut = () => {
@@ -107,7 +110,7 @@ const useFireBase = () => {
         });
     }
 
-    return {admin, isLoading, registerUser, setIsLoading, handleGoogleSignIn, logOut, loginUser, user, error, setError };
+    return { admin, isLoading, registerUser, setIsLoading, handleGoogleSignIn, logOut, loginUser, user, error, setError };
 };
 
 export default useFireBase;

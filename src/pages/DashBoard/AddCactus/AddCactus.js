@@ -25,16 +25,14 @@ const AddCactus = () => {
     }
 
     return (
-        <div className="d-flex">
-            <div>
-
-            </div>
-            <div style={{width:'100%'}}>
+        <div className="px-5">
+            <div style={{ width: '100%' }}>
+                <h1 className="text-center">Add a Cactus</h1>
                 <div className="container p-4 ">
-                    <form className="col-lg-6 d-flex mx-auto flex-column gap-2" onSubmit={handleSubmit(onSubmit)}>
+                    <form className="col-lg-12 d-flex mx-auto flex-column gap-2" onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group row">
                             <label className="col-sm-4 col-form-label"> Item Name </label>
-                            <div className="col-sm-8">
+                            <div className="col-sm-8 ">
                                 <input className="form-control" placeholder="Item Name" {...register("itemName", { required: true })} />
                             </div>
                         </div>
