@@ -26,7 +26,7 @@ const useFireBase = () => {
     }, [])
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/users/${user.email}`)
+        axios.get(`https://shrouded-sierra-03069.herokuapp.com/users/${user.email}`)
             .then(data => setAdmin(data.data.admin))
     }, [user.email])
 
@@ -85,10 +85,10 @@ const useFireBase = () => {
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
         if (method === 'post') {
-            axios.post('http://localhost:8080/users/create', user)
+            axios.post('https://shrouded-sierra-03069.herokuapp.com/users/create', user)
         }
         else if (method === 'put') {
-            axios.put('http://localhost:8080/users/create', user)
+            axios.put('https://shrouded-sierra-03069.herokuapp.com/users/create', user)
         }
 
     }

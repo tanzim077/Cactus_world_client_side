@@ -16,20 +16,20 @@ const ItemDetails = () => {
 
     const { price, description, itemName, image, origin } = item;
     const userStatus = "pending";
-    
+
     const date = new Date();
     const bookedDate = date.toLocaleDateString();
-    
+
     const onSubmit = (data) => {
         const orderData = { ...data, bookedDate, userStatus, price, description, itemName, image, origin }
         orderData.bookedDate = bookedDate;
-        axios.post('http://localhost:8080/orders/create', orderData)
+        axios.post('https://shrouded-sierra-03069.herokuapp.com/orders/create', orderData)
             .then(alert("Inserted successfully"))
             .then(history.push('/items'))
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/items/${id}`)
+        axios.get(`https://shrouded-sierra-03069.herokuapp.com/items/${id}`)
             .then(function (response) {
                 setItem(response.data);
             })

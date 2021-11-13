@@ -21,7 +21,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure to delete?")
         if (proceed) {
-            axios.delete(`http://localhost:8080/orders/${id}`)
+            axios.delete(`https://shrouded-sierra-03069.herokuapp.com/orders/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const remainingOrders = data.filter(d => d._id !== id)
@@ -31,7 +31,7 @@ const MyOrders = () => {
         }
     }
     return (
-        <div className= "container-fluid">
+        <div className="container-fluid">
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>

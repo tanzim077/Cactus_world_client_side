@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = e => {
         const user = { email };
-        axios.put('http://localhost:8080/users/admin', user)
+        axios.put('https://shrouded-sierra-03069.herokuapp.com/users/admin', user)
             .then(data => {
                 if (data.data.modifiedCount) {
                     setEmail('');
@@ -29,7 +29,7 @@ const MakeAdmin = () => {
     }
     return (
         <div className="container-fluid">
-            <div className="container px-5 py-5" style={{width:'100%'}}>
+            <div className="container px-5 py-5" style={{ width: '100%' }}>
                 <h1>Make an Admin </h1>
                 <form onSubmit={handleAdminSubmit}>
                     <input onBlur={emailHandle} className="form-control" style={{ width: '70%', display: 'inline' }} type="email" name="" id="" />
