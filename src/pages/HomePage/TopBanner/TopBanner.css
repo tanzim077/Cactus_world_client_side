@@ -1,5 +1,41 @@
 @import url(//fonts.googleapis.com/css?family=Montserrat:400,500,700);
 
+/* Adding CSS manually is only necessary in JSFiddle,
+   where CSS can't be inserted into the <head> */
+.typed-cursor {
+    opacity: 1;
+    animation: typedjsBlink 0.7s infinite;
+    -webkit-animation: typedjsBlink 0.7s infinite;
+    animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+    50% {
+        opacity: 0.0;
+    }
+}
+
+@-webkit-keyframes typedjsBlink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.typed-fade-out {
+    opacity: 0;
+    transition: opacity .25s;
+    -webkit-animation: 0;
+    animation: 0;
+}
+
 .static-slider7 {
     font-family: "Montserrat", sans-serif;
     color: #8d97ad;
@@ -11,7 +47,7 @@
 }
 
 .static-slider7 h1.title {
-    font-size: 122px;
+    font-size: 60px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 130px;
