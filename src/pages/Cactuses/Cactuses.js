@@ -30,13 +30,13 @@ const Cactuses = () => {
                                         </h3>
                                     </div>
                                     <div className="card-text">
-                                        <h4>{data.origin}</h4>
+                                        <h4>Origin: {data.origin}</h4>
                                     </div>
                                     <div className="card-text">
                                         {data.description}
                                     </div>
                                     <div className="text-danger card-text">
-                                        <h4>{data.price} ৳</h4>
+                                        <h4>Price : {data.price} ৳</h4>
                                     </div>
                                     <Link to={`/itemdetails/${data._id}`}><a href="#" className="card-button"><i class="fab fa-opencart"></i> &nbsp; &nbsp; Purchase</a></Link>
                                 </div>

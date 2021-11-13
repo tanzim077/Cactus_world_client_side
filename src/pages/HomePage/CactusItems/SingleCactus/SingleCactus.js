@@ -21,13 +21,13 @@ const SingleCactus = (props) => {
                         </h3>
                     </div>
                     <div className="card-text">
-                        <h4>{origin}</h4>
+                        <h4>Origin: {origin}</h4>
                     </div>
                     <div className="card-text">
                         {description}
                     </div>
                     <div className="text-danger card-text">
-                        <h4>{price} ৳</h4>
+                        <h4>Price: {price} ৳</h4>
                     </div>
                     <Link to={`/itemdetails/${_id}`}><a href="#" className="card-button"><i class="fab fa-opencart"></i> &nbsp; &nbsp; Purchase</a></Link>
                 </div>
