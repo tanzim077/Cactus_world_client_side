@@ -22,6 +22,7 @@ const Reviews = () => {
     const [data] = useReviewsData();
 
     return (
+        
         <div className="container d-flex">
             <>
                 <Swiper slidesPerView={3} spaceBetween={30} slidesPerGroup={3} loop={true} loopFillGroupWithBlank={true} centeredSlides={true} autoplay={{
