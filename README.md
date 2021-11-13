@@ -16,6 +16,7 @@ Some features of the application
 - View update and delete orders and items.
 - Admin can add /update / delete an items.
 - Admin can make another admin. 
+- User can give review and ratings. 
 - Admin can update a order status.
 - Redirect to the login page.
 - Context API for firebase login system access.

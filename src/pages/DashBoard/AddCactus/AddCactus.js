@@ -18,7 +18,6 @@ const AddCactus = () => {
         axios.post('https://shrouded-sierra-03069.herokuapp.com/items/create', data)
             .then(alert("Inserted successfully"))
             .then(() => {
-                reset();
                 history.push('/items')
             })
 
