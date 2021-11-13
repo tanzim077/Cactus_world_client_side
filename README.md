@@ -21,5 +21,5 @@ Some features of the application
 - Redirect to the login page.
 - Context API for firebase login system access.
 
-Live Site Link: https://world-of-cactus.web.app/
-Serber Side Link: https://github.com/tanzim077/Cactus_world_server_side
+Live Site Link: https://world-of-cactus.web.app/  
+Server Side Link: https://github.com/tanzim077/Cactus_world_server_side
