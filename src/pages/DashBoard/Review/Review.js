@@ -38,13 +38,11 @@ const Review = () => {
         setRating(newRating);
     };
 
-console.log(rating);
-
     return (
         <div className="container-fluid">
             <form onSubmit={handleReview} className="pt-4 col-lg-7 d-flex flex-column ">
-                
-                
+
+
 
                 <div className="mb-3 d-flex gap-4">
                     <label htmlFor="exampleInputName1" className="form-label">Give Rating</label>
