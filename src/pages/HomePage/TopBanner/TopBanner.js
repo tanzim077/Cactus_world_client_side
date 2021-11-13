@@ -1,6 +1,7 @@
 import React from 'react';
 import './TopBanner.css';
 import { Link } from 'react-router-dom';
+import bg1 from '../../../images/bg1.jpg'
 
 const TopBanner = () => {
 
@@ -64,7 +65,7 @@ const TopBanner = () => {
         return (
             <div className="container-fluid">
                 <div className="static-slider7" style={{
-                    backgroundImage: "url(https://lh3.googleusercontent.com/proxy/P99nEtYE-8yLYj09k80X31ENnQE5BzghJAltMnf6VYgmWKwaTOII5kFMJsfzE4YZ_HiVDNXTEV4MjS81OhhesQRG6DfbOkUSs1bir85lJxg1CBXbMM734CkgDZ3P-yBnhlFqpRoveYWBw7EJMYjBP5Tp6A)"
+                    backgroundImage: `url(${bg1})`
                 }}>
                     <div className="container">
 

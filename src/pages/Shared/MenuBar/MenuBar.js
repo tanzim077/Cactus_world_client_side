@@ -3,7 +3,7 @@ import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './MenuBar.css';
-
+import logo from '../../../images/logo.png';
 
 const MenuBar = () => {
     const { user, logOut } = useAuth();
@@ -16,7 +16,7 @@ const MenuBar = () => {
                     <div className="col-12 col-md-12 col-lg-8 d-lg-flex custom-link">
                         <Navbar bg="light" expand="lg" className="navbar-brand">
                             <Container fluid>
-                                <Navbar.Brand href=""><img className="logo-img" src="https://cdn-icons.flaticon.com/png/512/3006/premium/3006828.png?token=exp=1636809091~hmac=bb96ce5fa8772fd1d041160b43ad8ef4" alt="" /></Navbar.Brand>
+                                <Navbar.Brand href=""><img className="logo-img" src={logo} alt="" /></Navbar.Brand>
                                 
                                 <Navbar.Toggle aria-controls="navbarScroll" />
                                 <Navbar.Collapse id="navbarScroll">
