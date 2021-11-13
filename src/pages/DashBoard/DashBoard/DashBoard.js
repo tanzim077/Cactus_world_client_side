@@ -14,10 +14,10 @@ import AdminRoute from '../../Login/AdminRoute/AdminRoute'
 import AddCactus from '../AddCactus/AddCactus';
 import ItemsList from '../ItemsList/ItemsList';
 import OrdersList from '../OrdersList/OrdersList';
-import MyOrders from '../../MyOrders/MyOrders';
 import useAuth from '../../../hooks/useAuth';
 import Payment from '../Payment/Payment';
 import Review from '../Review/Review';
+import MyOrders from '../MyOrders/MyOrders';
 
 const DashBoard = () => {
 
@@ -25,28 +25,28 @@ const DashBoard = () => {
     let { path, url } = useRouteMatch();
 
     return (
-        <div className='d-flex'>
+        <div className='d-lg-flex'>
             <div>
                 <div id="dash-nav" className="d-flex flex-column">
                     <nav id="navbar" className="nav-menu navbar">
                         <ul>
-                            <Link to="/home"><Nav.Link href="home">Home</Nav.Link></Link>
+                            <Link to="/home"><Nav.Link href="home"><i class="fas fa-home"></i>Home</Nav.Link></Link>
                             {!admin ?
                                 <>
-                                    <Link to={`${url}/myorders`}><NavDropdown.Item href="myorders">My Orders</NavDropdown.Item></Link>
-                                    <Link to={`${url}/payment`}><NavDropdown.Item href="payment">Payment</NavDropdown.Item></Link>
-                                    <Link to={`${url}/review`}><NavDropdown.Item href="reviews">Reviews</NavDropdown.Item></Link>
+                                    <Link to={`${url}/myorders`}><NavDropdown.Item href="myorders"><i class="fas fa-shopping-cart"></i> My Orders</NavDropdown.Item></Link>
+                                    <Link to={`${url}/payment`}><NavDropdown.Item href="payment"><i class="fas fa-money-check-alt"></i>Payment</NavDropdown.Item></Link>
+                                    <Link to={`${url}/review`}><NavDropdown.Item href="reviews"><i class="fab fa-blogger"></i>Reviews</NavDropdown.Item></Link>
 
                                 </>
                                 :
                                 <>
-                                    <Link to={`${url}/makeadmin`}><NavDropdown.Item href="makeadmin">Make Admin</NavDropdown.Item></Link>
-                                    <Link to={`${url}/addcactus`}><NavDropdown.Item href="addcactus">Add an Item</NavDropdown.Item></Link>
-                                    <Link to={`${url}/itemslist`}><NavDropdown.Item href="itemslist">All Items</NavDropdown.Item></Link>
-                                    <Link to={`${url}/orderslist`}><NavDropdown.Item href="orderslist">All Orders</NavDropdown.Item></Link>
+                                    <Link to={`${url}/makeadmin`}><NavDropdown.Item href="makeadmin"><i class="fas fa-user-shield"></i> Make Admin</NavDropdown.Item></Link>
+                                    <Link to={`${url}/addcactus`}><NavDropdown.Item href="addcactus"><i class="fas fa-plus-square"></i> Add an Item</NavDropdown.Item></Link>
+                                    <Link to={`${url}/itemslist`}><NavDropdown.Item href="itemslist"><i class="fas fa-seedling"></i>  All Items</NavDropdown.Item></Link>
+                                    <Link to={`${url}/orderslist`}><NavDropdown.Item href="orderslist"><i class="fas fa-shopping-cart"></i> All Orders</NavDropdown.Item></Link>
                                 </>
                             }
-                            <Link to="/home"><NavDropdown.Item href="home" onClick={logOut} >Sign Out</NavDropdown.Item></Link>
+                            <Link to="/home"><NavDropdown.Item href="home" onClick={logOut} ><i class="fas fa-sign-out-alt"></i>Sign Out</NavDropdown.Item></Link>
                         </ul>
                     </nav>
                 </div>

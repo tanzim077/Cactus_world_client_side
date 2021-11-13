@@ -50,7 +50,7 @@ const OrderUpdate = () => {
         axios.put(`http://localhost:8080/orders/${id}`, order)
             .then(res => alert("Update Successfully"))
             .then(setOrder({}))
-            .then(() => history.push('/myorder'))
+            .then(() => history.push('/dashboard/myorders'))
         data.preventDefault();
     }
 

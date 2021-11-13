@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
@@ -17,17 +18,23 @@ const MakeAdmin = () => {
                     setEmail('');
                     setSuccess(true);
                 }
+                else {
+                    setEmail('');
+                    alert("User Not found")
+                    window.location.reload();
+                }
             })
-
+        setEmail('');
         e.preventDefault()
     }
     return (
-        <div>
-            <div className="container px-5  py-5 ">
+        <div className="container-fluid">
+            <div className="container px-5 py-5" style={{width:'100%'}}>
                 <h1>Make an Admin </h1>
                 <form onSubmit={handleAdminSubmit}>
-                    <input onBlur={emailHandle} type="email" name="" id="" />
-                    <button type="submit">Make Admin</button>
+                    <input onBlur={emailHandle} className="form-control" style={{ width: '70%', display: 'inline' }} type="email" name="" id="" />
+                    &nbsp;&nbsp;
+                    <Button variant="success" type="submit">Make Admin</Button>
                 </form>
                 {success && <h1>Admin Added</h1>}
             </div>

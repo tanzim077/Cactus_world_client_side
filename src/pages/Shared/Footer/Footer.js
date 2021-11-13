@@ -21,8 +21,8 @@ const Footer = () => {
                                 <ul className="link_menu">
                                     <Link to='/'><li><a href="#">Home</a></li>
                                     </Link>
-                                    <Link to='/events'> <li><a href="events">Events</a></li></Link>
-                                    <li><a href="#"> About Us</a></li>
+                                    <Link to='/items'> <li><a href="items">Items</a></li></Link>
+                                    <Link to='/aboutus'> <li><a href="aboutus">About Us</a></li></Link>
                                     <li><a href="#">Our Goals</a></li>
                                 </ul>
                             </div>
@@ -34,11 +34,9 @@ const Footer = () => {
                             </div>
                             <div className="col-lg-3 offset-md-lg-2 col-md-4 offset-md-1">
                                 <h3>Contact </h3>
-                                <ul className="social-link">
-                                    <li><i className="fa fa-map-marker" aria-hidden="true"></i> Dhaka, Bangladesh</li>
-                                    <li> <i className="fa fa-envelope" aria-hidden="true"></i><a > admin1@gmail.com</a></li>
-                                    <li><i className="fa fa-mobile" aria-hidden="true"></i> Call : +01123456789</li>
-                                </ul>
+                                <p><i className="fa fa-map-marker" aria-hidden="true"></i> Dhaka, Bangladesh</p>
+                                <p> <i className="fa fa-envelope" aria-hidden="true"></i><a > admin@gmail.com</a></p>
+                                <p><i className="fa fa-mobile" aria-hidden="true"></i> Call : +01123456789</p>
                             </div>
                         </div>
                     </div>

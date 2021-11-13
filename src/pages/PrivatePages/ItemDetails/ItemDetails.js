@@ -16,11 +16,16 @@ const ItemDetails = () => {
 
     const { price, description, itemName, image, origin } = item;
     const userStatus = "pending";
+    
+    const date = new Date();
+    const bookedDate = date.toLocaleDateString();
+    
     const onSubmit = (data) => {
-        const orderData = { ...data, userStatus, price, description, itemName, image, origin }
+        const orderData = { ...data, bookedDate, userStatus, price, description, itemName, image, origin }
+        orderData.bookedDate = bookedDate;
         axios.post('http://localhost:8080/orders/create', orderData)
             .then(alert("Inserted successfully"))
-            .then(history.push('/cactuses'))
+            .then(history.push('/items'))
     }
 
     useEffect(() => {

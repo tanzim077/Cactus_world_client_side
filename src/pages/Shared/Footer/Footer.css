@@ -1,5 +1,5 @@
 .footer {
-    background: #000000;
+    background: #1f363196;
     padding-top: 50px;
     padding-bottom: 30px;
     text-align: center;
@@ -7,7 +7,7 @@
 }
 
 .social-link li {
-    color: #d5d2d2;
+    color: #000000;
     text-justify: left;
 }
 
@@ -25,7 +25,7 @@
     font-size: 20px;
     line-height: 24px;
     text-align: left;
-    color: #fff;
+    color: rgb(0, 0, 0);
     margin-bottom: 15px;
     display: table;
     text-transform: uppercase;
@@ -58,7 +58,7 @@ ul.link_menu li.active a {
 }
 
 ul.link_menu li a {
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-size: 17px;
     line-height: 32px;
     display: block;
@@ -76,7 +76,7 @@ ul.link_menu li a:hover {
 }
 
 .many {
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-size: 17px;
     line-height: 32px;
     font-weight: normal;

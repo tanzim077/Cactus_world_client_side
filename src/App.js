@@ -5,16 +5,15 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Home from './pages/HomePage/Home/Home';
 import LogIn from './pages/Login/Login/Login';
 import Signup from './pages/Signup/Signup';
-import AddCactus from './pages/DashBoard/AddCactus/AddCactus';
 import Cactuses from './pages/Cactuses/Cactuses';
 import ItemDetails from './pages/PrivatePages/ItemDetails/ItemDetails';
-import MyOrders from './pages/MyOrders/MyOrders';
 import OrderUpdate from './pages/PrivatePages/OrderUpdate/OrderUpdate';
-import ItemsList from './pages/DashBoard/ItemsList/ItemsList';
 import ItemUpdate from './pages/PrivatePages/ItemUpdate/ItemUpdate';
-import OrdersList from './pages/DashBoard/OrdersList/OrdersList';
 import PrivateRoute from './pages/Login/PrivateRoute/PrivateRoute';
 import DashBoard from './pages/DashBoard/DashBoard/DashBoard';
+import NotFound from './pages/PrivatePages/NotFound/NotFound';
+import AboutUsHome from './pages/AboutUs/AboutUsHome/AboutUsHome';
+
 function App() {
   return (
     <div className="App">
@@ -27,16 +26,18 @@ function App() {
             <Route exact path="/home" >
              <Home/>
             </Route>
-            <Route exact path="/cactuses" >
+            <Route exact path="/items" >
              <Cactuses/>
+            </Route>
+            <Route exact path="/aboutus" >
+             <AboutUsHome/>
             </Route>
             <PrivateRoute path="/itemdetails/:id">
               <ItemDetails></ItemDetails>
             </PrivateRoute>
             <PrivateRoute exact path="/itemupdate/:id">
               <ItemUpdate></ItemUpdate>
-            </PrivateRoute>
-                   
+            </PrivateRoute>  
             <PrivateRoute exact path="/orderupdate/:id">
               <OrderUpdate></OrderUpdate>
             </PrivateRoute>
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route exact path="/signup" >
              <Signup/>
+            </Route>
+            <Route exact path="*">
+              <NotFound />
             </Route>
           </Switch>
           </BrowserRouter>

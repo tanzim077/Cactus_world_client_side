@@ -9,28 +9,8 @@ const LogIn = () => {
     const { loginUser, error } = useAuth();
     const location = useLocation();
     const history = useHistory();
-    const redirect_URL = location.state?.from || '/home';
+    // const redirect_URL = location.state?.from || '/home';
     const [loginData, setLoginData] = useState({});
-
-    // console.log("History ")
-    // console.log(history);
-    // console.log("Location");
-    // console.log(location);
-
-    // const handleLogin = (e) => {
-    //     e.preventDefault();
-    //     const auth = getAuth();
-    //     signInWithEmailAndPassword(auth, email, password)
-    //         .then((userCredential) => {
-    //             const user = userCredential.user;
-    //             history.push(redirect_URL);
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             setError(errorMessage)
-    //         });
-    // }
 
     const emailHandle = e => {
         const newLoginData = { ...loginData };
@@ -48,7 +28,6 @@ const LogIn = () => {
         loginUser(loginData.email, loginData.password, location, history);
         e.preventDefault();
     }
-
 
     return (
         <div>

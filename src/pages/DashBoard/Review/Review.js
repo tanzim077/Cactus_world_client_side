@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import {Button, FormControl, InputGroup} from 'react-bootstrap';
 
 const Review = () => {
 
@@ -24,14 +25,16 @@ const Review = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleReview}>
-                <div className="mb-3">
+        <div className="container-fluid">
+            <form onSubmit={handleReview} className= "pt-4 col-lg-7 d-flex flex-column ">
+                <div className="mb-3 d-flex gap-4">
                     <label htmlFor="exampleInputName1" className="form-label">Review</label>
-                    <input type="text" onBlur={reviewHandle} className="form-control" id="exampleInputName" />
+                    <InputGroup>
+                        <FormControl onBlur={reviewHandle} as="textarea" aria-label="With textarea" />
+                    </InputGroup>
                 </div>
                 <div className="d-flex justify-content-center">
-                    <button type="submit" className="text-center btn btn-primary">Submit</button>
+                    <Button type="submit" variant="success" className="text-center">Submit</Button>
                 </div>
             </form>
         </div>

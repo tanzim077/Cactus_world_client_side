@@ -16,7 +16,7 @@ const CactusItems = () => {
             {
                 displaydata.map(singledata => <SingleCactus key={singledata.id} singledata={singledata}></SingleCactus>)
             }
-            <Link to='/cactuses'><Button variant="warning">See All</Button></Link>
+            <Link to='/items'><Button style={{width: '30%'}} variant="info">See All</Button></Link>
         </div>
     );
 };

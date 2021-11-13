@@ -30,9 +30,7 @@ const OrdersList = () => {
     }
 
     return (
-        <div className="d-flex">
-            <div>
-            </div>
+        <div className= "container-fluid">
             <div >
                 <Table striped bordered hover size="sm">
                     <thead>
@@ -45,7 +43,7 @@ const OrdersList = () => {
                             <th>Item Name</th>
                             <th>Price</th>
                             <th>Item Image</th>
-                            <th>Origin</th>
+                            <th>Booked At</th>
                             <th>Status</th>
                             <th>Delete</th>
 
@@ -63,14 +61,14 @@ const OrdersList = () => {
                                     <td>{d.itemName}</td>
                                     <td>{d.price}</td>
                                     <td><img className="img-thumbnail" src={d.image} alt="" /></td>
-                                    <td>{d.origin}</td>
+                                    <td>{d.bookedDate}</td>
                                     <td>
                                         {
 
                                             (d.userStatus === "pending") ?
-                                                <Button onClick={() => handleStatus(d._id)} variant="info">Shipped ✅</Button>
+                                                <Button onClick={() => handleStatus(d._id)} variant="info">Shipped 🚛</Button>
                                                 :
-                                                <Button onClick={() => handleStatus(d._id)} variant="warning">Reject ❌</Button>
+                                                <Button onClick={() => handleStatus(d._id)} variant="warning">Processing ⏳️</Button>
                                         }
 
                                     </td>

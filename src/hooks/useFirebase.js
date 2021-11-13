@@ -30,13 +30,11 @@ const useFireBase = () => {
             .then(data => setAdmin(data.data.admin))
     }, [user.email])
 
-    // console.log(user);
-
     const loginUser = (email, password, location, history) => {
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const destination = location?.state?.from || '/';
+                const destination = location?.state?.from || '/dashboard';
                 history.replace(destination);
                 setError('');
             })
@@ -53,7 +51,7 @@ const useFireBase = () => {
                 const user = result.user;
                 saveUser(user.email, user.displayName, 'put');
                 setError('');
-                const destination = location?.state?.from || '/';
+                const destination = location?.state?.from || '/dashboard';
                 history.replace(destination);
                 setError('');
             })
@@ -62,8 +60,6 @@ const useFireBase = () => {
             }).finally(() => setIsLoading(false));
     }
 
-    // Need to customize
-    // Registration through form 
     const registerUser = (email, password, name, location, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -71,15 +67,13 @@ const useFireBase = () => {
                 setError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
-                // save user to the database
                 saveUser(email, name, 'post');
-                // send name to firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
                 }).catch((error) => {
                 });
-                const destination = location?.state?.from || '/';
+                const destination = location?.state?.from || '/dashboard';
                 history.replace(destination);
             })
             .catch((error) => {
@@ -98,9 +92,6 @@ const useFireBase = () => {
         }
 
     }
-
-
-
 
     const logOut = () => {
         const auth = getAuth();

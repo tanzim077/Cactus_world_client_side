@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import useOrdersData from '../../hooks/useOrdersData';
-import MenuBar from '../Shared/MenuBar/MenuBar';
+import useOrdersData from '../../../hooks/useOrdersData';
+import useAuth from '../../../hooks/useAuth';
 
 
 const MyOrders = () => {
@@ -32,7 +31,7 @@ const MyOrders = () => {
         }
     }
     return (
-        <div style={{width: '100%'}}>
+        <div className= "container-fluid">
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
@@ -63,7 +62,7 @@ const MyOrders = () => {
                                 {
                                     (d.userStatus === "pending") ?
                                         <td>Pending</td> :
-                                        <td>Confirmed</td>
+                                        <td>Shipped</td>
                                 }
                                 <td>
                                     <Link to={`/orderupdate/${d._id}`}><Button variant="warning">Update</Button></Link>
