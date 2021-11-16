@@ -5,7 +5,7 @@ const useOrdersData = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('https://shrouded-sierra-03069.herokuapp.com/orders')
+        axios.get('http://localhost:8080/orders')
             .then(result => {
                 setData(result.data.orders);
             })

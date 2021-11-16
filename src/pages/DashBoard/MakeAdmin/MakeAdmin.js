@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = e => {
         const user = { email };
-        axios.put('https://shrouded-sierra-03069.herokuapp.com/users/admin', user)
+        axios.put('http://localhost:8080/users/admin', user)
             .then(data => {
                 if (data.data.modifiedCount) {
                     setEmail('');

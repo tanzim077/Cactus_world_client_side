@@ -27,7 +27,7 @@ const Review = () => {
     }
 
     const handleReview = (e) => {
-        axios.post('https://shrouded-sierra-03069.herokuapp.com/reviews/create', review)
+        axios.post('http://localhost:8080/reviews/create', review)
             .then(alert("Inserted successfully"))
             .then(() => {
                 history.push('/dashboard')

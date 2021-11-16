@@ -11,11 +11,11 @@ const AddCactus = () => {
 
 
     useEffect(() => {
-        axios.get('https://shrouded-sierra-03069.herokuapp.com/items')
+        axios.get('http://localhost:8080/items')
     }, [])
 
     const onSubmit = data => {
-        axios.post('https://shrouded-sierra-03069.herokuapp.com/items/create', data)
+        axios.post('http://localhost:8080/items/create', data)
             .then(alert("Inserted successfully"))
             .then(() => {
                 history.push('/items')

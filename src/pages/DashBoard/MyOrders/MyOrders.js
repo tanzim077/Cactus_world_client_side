@@ -21,7 +21,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure to delete?")
         if (proceed) {
-            axios.delete(`https://shrouded-sierra-03069.herokuapp.com/orders/${id}`)
+            axios.delete(`http://localhost:8080/orders/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const remainingOrders = data.filter(d => d._id !== id)
@@ -42,6 +42,7 @@ const MyOrders = () => {
                         <th>Address</th>
                         <th>Item Name</th>
                         <th>Price</th>
+                        <th>Payment</th>
                         <th>Status</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -59,6 +60,7 @@ const MyOrders = () => {
                                 <td>{d.userAddress}</td>
                                 <td>{d.itemName}</td>
                                 <td>{d.price}</td>
+                                <td>{d.payment}</td>
                                 {
                                     (d.userStatus === "pending") ?
                                         <td>Pending</td> :

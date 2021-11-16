@@ -11,7 +11,7 @@ const OrdersList = () => {
     const handleStatus = (id) => {
         const remainingData = data.find(d => d._id === id)
         const { _id, ...newData } = remainingData;
-        axios.put(`https://shrouded-sierra-03069.herokuapp.com/orders/status/${id}`, newData)
+        axios.put(`http://localhost:8080/orders/status/${id}`, newData)
             .then(res => alert("Schedule Status Updated Successfully"))
             .then(() => window.location.reload())
     }
@@ -19,7 +19,7 @@ const OrdersList = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure to delete?")
         if (proceed) {
-            axios.delete(`https://shrouded-sierra-03069.herokuapp.com/orders/${id}`)
+            axios.delete(`http://localhost:8080/orders/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const remainingOrders = data.filter(d => d._id !== id)

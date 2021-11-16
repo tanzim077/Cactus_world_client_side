@@ -8,7 +8,7 @@ const OrderUpdate = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`https://shrouded-sierra-03069.herokuapp.com/orders/${id}`)
+        axios.get(`http://localhost:8080/orders/${id}`)
             .then(function (response) {
                 setOrder(response.data);
 
@@ -47,7 +47,7 @@ const OrderUpdate = () => {
 
 
     const handleUpdate = (data) => {
-        axios.put(`https://shrouded-sierra-03069.herokuapp.com/orders/${id}`, order)
+        axios.put(`http://localhost:8080/orders/${id}`, order)
             .then(res => alert("Update Successfully"))
             .then(setOrder({}))
             .then(() => history.push('/dashboard/myorders'))

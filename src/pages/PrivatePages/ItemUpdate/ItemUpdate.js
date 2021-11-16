@@ -10,7 +10,7 @@ const ItemUpdate = () => {
     const history = useHistory();
 
     useEffect(() => {
-        axios.get(`https://shrouded-sierra-03069.herokuapp.com/items/${id}`)
+        axios.get(`http://localhost:8080/items/${id}`)
             .then(function (response) {
                 setItem(response.data);
             })
@@ -52,7 +52,7 @@ const ItemUpdate = () => {
 
 
     const handleUpdate = (data) => {
-        axios.put(`https://shrouded-sierra-03069.herokuapp.com/items/${id}`, item)
+        axios.put(`http://localhost:8080/items/${id}`, item)
             .then(res => alert("Update Successfully"))
             .then(setItem({}))
             .then(() => history.push('/itemslist'))

@@ -13,7 +13,7 @@ const ItemsList = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure to delete?")
         if (proceed) {
-            axios.delete(`https://shrouded-sierra-03069.herokuapp.com/items/${id}`)
+            axios.delete(`http://localhost:8080/items/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const remainingItem = data.filter(m => m._id !== id)
