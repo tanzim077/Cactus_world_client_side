@@ -5,7 +5,7 @@ const useReviewsData = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/reviews')
+        axios.get('https://mighty-crag-94651.herokuapp.com/reviews')
             .then(result => {
                 setData(result.data.reviews);
             })

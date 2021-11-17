@@ -21,7 +21,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure to delete?")
         if (proceed) {
-            axios.delete(`http://localhost:8080/orders/${id}`)
+            axios.delete(`https://mighty-crag-94651.herokuapp.com/orders/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const remainingOrders = data.filter(d => d._id !== id)

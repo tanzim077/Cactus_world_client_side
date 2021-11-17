@@ -13,7 +13,7 @@ const ItemsList = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure to delete?")
         if (proceed) {
-            axios.delete(`http://localhost:8080/items/${id}`)
+            axios.delete(`https://mighty-crag-94651.herokuapp.com/items/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const remainingItem = data.filter(m => m._id !== id)

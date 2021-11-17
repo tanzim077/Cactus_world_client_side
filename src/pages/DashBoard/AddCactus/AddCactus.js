@@ -11,11 +11,11 @@ const AddCactus = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:8080/items')
+        axios.get('https://mighty-crag-94651.herokuapp.com/items')
     }, [])
 
     const onSubmit = data => {
-        axios.post('http://localhost:8080/items/create', data)
+        axios.post('https://mighty-crag-94651.herokuapp.com/items/create', data)
             .then(alert("Inserted successfully"))
             .then(() => {
                 history.push('/items')

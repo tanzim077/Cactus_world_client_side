@@ -27,7 +27,7 @@ const Review = () => {
     }
 
     const handleReview = (e) => {
-        axios.post('http://localhost:8080/reviews/create', review)
+        axios.post('https://mighty-crag-94651.herokuapp.com/reviews/create', review)
             .then(alert("Inserted successfully"))
             .then(() => {
                 history.push('/dashboard')

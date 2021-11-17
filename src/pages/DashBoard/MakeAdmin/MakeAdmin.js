@@ -12,7 +12,7 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = e => {
         const user = { email };
-        axios.put('http://localhost:8080/users/admin', user)
+        axios.put('https://mighty-crag-94651.herokuapp.com/users/admin', user)
             .then(data => {
                 if (data.data.modifiedCount) {
                     setEmail('');

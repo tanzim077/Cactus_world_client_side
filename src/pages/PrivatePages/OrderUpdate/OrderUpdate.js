@@ -8,7 +8,7 @@ const OrderUpdate = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/orders/${id}`)
+        axios.get(`https://mighty-crag-94651.herokuapp.com/orders/${id}`)
             .then(function (response) {
                 setOrder(response.data);
 
@@ -47,7 +47,7 @@ const OrderUpdate = () => {
 
 
     const handleUpdate = (data) => {
-        axios.put(`http://localhost:8080/orders/${id}`, order)
+        axios.put(`https://mighty-crag-94651.herokuapp.com/orders/${id}`, order)
             .then(res => alert("Update Successfully"))
             .then(setOrder({}))
             .then(() => history.push('/dashboard/myorders'))

@@ -9,14 +9,15 @@ const CheckoutForm = ({ myOrder, totalAmount }) => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
-    const {user} = useAuth();
+    const { user } = useAuth();
 
     const [clientSecret, setClientSecret] = React.useState('');
 
 
+    // https://mighty-crag-94651.herokuapp.com
 
     useEffect(() => {
-        axios.post('http://localhost:8080/create-payment-intent', { totalAmount })
+        axios.post('https://mighty-crag-94651.herokuapp.com/create-payment-intent', { totalAmount })
             .then(data => {
                 setClientSecret(data.data.clientSecret)
             })

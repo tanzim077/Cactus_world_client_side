@@ -24,13 +24,13 @@ const ItemDetails = () => {
     const onSubmit = (data) => {
         const orderData = { ...data, bookedDate, payment, userStatus, price, description, itemName, image, origin }
         orderData.bookedDate = bookedDate;
-        axios.post('http://localhost:8080/orders/create', orderData)
+        axios.post('https://mighty-crag-94651.herokuapp.com/orders/create', orderData)
             .then(alert("Inserted successfully"))
             .then(history.push('/items'))
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/items/${id}`)
+        axios.get(`https://mighty-crag-94651.herokuapp.com/items/${id}`)
             .then(function (response) {
                 setItem(response.data);
             })

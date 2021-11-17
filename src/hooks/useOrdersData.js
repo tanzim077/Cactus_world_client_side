@@ -5,7 +5,7 @@ const useOrdersData = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/orders')
+        axios.get('https://mighty-crag-94651.herokuapp.com/orders')
             .then(result => {
                 setData(result.data.orders);
             })
