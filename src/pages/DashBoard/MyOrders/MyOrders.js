@@ -15,7 +15,7 @@ const MyOrders = () => {
     var i = 0;
 
 
-    const myOrder = data.filter(d => d.userEmail == userMail)
+    const myOrder = data.filter(d => d.userEmail === userMail)
 
 
     const handleDelete = (id) => {
@@ -60,7 +60,7 @@ const MyOrders = () => {
                                 <td>{d.userAddress}</td>
                                 <td>{d.itemName}</td>
                                 <td>{d.price}</td>
-                                <td>{d.payment}</td>
+                                <td>{d.paymentStatus}</td>
                                 {
                                     (d.deliveryStatus === "pending") ?
                                         <td>Pending</td> :

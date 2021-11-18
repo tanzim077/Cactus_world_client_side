@@ -9,7 +9,7 @@ const useOrdersData = () => {
             .then(result => {
                 setData(result.data.orders);
             })
-    }, [])
+    }, [data])
 
     return [data, setData];
 };

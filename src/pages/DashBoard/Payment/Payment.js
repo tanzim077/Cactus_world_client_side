@@ -14,7 +14,7 @@ const Payment = () => {
 
     const { user } = useAuth();
     const userMail = user.email;
-    const myOrder = data.filter(d => d.userEmail === userMail && d.payment === 'pending');
+    const myOrder = data.filter(d => d.userEmail === userMail && d.paymentStatus === 'pending');
 
     // console.log(myOrder);
 
@@ -50,7 +50,7 @@ const Payment = () => {
                                         <td>{++i}</td>
                                         <td>{d.itemName}</td>
                                         <td>{d.price}</td>
-                                        <td>{d.payment}</td>
+                                        <td>{d.paymentStatus}</td>
                                     </tr>
                                 )
                             }
