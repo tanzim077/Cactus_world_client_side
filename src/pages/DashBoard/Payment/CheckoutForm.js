@@ -2,6 +2,8 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import Spinner from 'react-bootstrap/Spinner';
+import { Button } from 'react-bootstrap';
 
 const CheckoutForm = ({ myOrder, totalAmount }) => {
     const stripe = useStripe();
@@ -10,10 +12,19 @@ const CheckoutForm = ({ myOrder, totalAmount }) => {
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
     const { user } = useAuth();
+    const [clientSecret, setClientSecret] = useState('');
+    const [paymentSuccess, setPaymentSuccess] = useState({});
 
-    const [clientSecret, setClientSecret] = React.useState('');
+    const paymentTime = new Date().toLocaleString();
+   
+    const paymentStatus = () => {     
+        myOrder.map(item => {
+            const { _id, ...newData } = item;
+            axios.put(`https://mighty-crag-94651.herokuapp.com/orders/successpayment/${_id}`, { paymentTime: paymentTime })
 
-
+        })
+    }
+    // http://localhost:8080
     // https://mighty-crag-94651.herokuapp.com
 
     useEffect(() => {
@@ -76,6 +87,7 @@ const CheckoutForm = ({ myOrder, totalAmount }) => {
         }
         else {
             setError('');
+            paymentStatus();
             setSuccess("Payment proceed successfully");
             setProcessing(false);
         }
@@ -103,11 +115,13 @@ const CheckoutForm = ({ myOrder, totalAmount }) => {
                         },
                     }}
                 />
-                {processing ? <></> : <button type="submit" disabled={!stripe}>
-                    Pay
-                </button>
+                <br/>
+                {processing ? <Spinner animation="border" variant="success" /> :
+                    <Button className="form-control" variant='success' type="submit" disabled={!stripe || success}>
+                        Pay
+                    </Button>
                 }
-
+                {/* <button onClick={paymentStatus}>test</button> */}
             </form>
             {error && <h3 className="text-danger">{error}</h3>}
             {success && <h3 className="text-success">{success}</h3>}

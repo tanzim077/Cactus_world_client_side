@@ -15,14 +15,14 @@ const ItemDetails = () => {
     const [item, setItem] = useState({});
 
     const { price, description, itemName, image, origin } = item;
-    const userStatus = "pending";
-    const payment = "pending";
+    const deliveryStatus = "pending";
+    const paymentStatus = "pending";
 
     const date = new Date();
     const bookedDate = date.toLocaleDateString();
 
     const onSubmit = (data) => {
-        const orderData = { ...data, bookedDate, payment, userStatus, price, description, itemName, image, origin }
+        const orderData = { ...data, bookedDate, paymentStatus, deliveryStatus, price, description, itemName, image, origin }
         orderData.bookedDate = bookedDate;
         axios.post('https://mighty-crag-94651.herokuapp.com/orders/create', orderData)
             .then(alert("Inserted successfully"))

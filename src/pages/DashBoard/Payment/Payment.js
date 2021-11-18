@@ -16,7 +16,7 @@ const Payment = () => {
     const userMail = user.email;
     const myOrder = data.filter(d => d.userEmail === userMail && d.payment === 'pending');
 
-    console.log(myOrder);
+    // console.log(myOrder);
 
     useEffect(() => {
         let sum = 0;
@@ -25,8 +25,7 @@ const Payment = () => {
     }, [myOrder])
 
     let i = 0;
-    console.log(totalAmount)
-
+    
     return (
         <div className="container-fluid px-5 py-5">
             <h2 className='text-success'>Payment System is coming soon</h2>

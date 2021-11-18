@@ -62,7 +62,7 @@ const MyOrders = () => {
                                 <td>{d.price}</td>
                                 <td>{d.payment}</td>
                                 {
-                                    (d.userStatus === "pending") ?
+                                    (d.deliveryStatus === "pending") ?
                                         <td>Pending</td> :
                                         <td>Shipped</td>
                                 }
