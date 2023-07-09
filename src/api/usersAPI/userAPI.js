@@ -23,5 +23,6 @@ const userAPI = axios.create({
 });
 
 export const SignUpAPI = (user) => userAPI.post("/signup", user);
+export const SignInAPI = (user) => userAPI.post("/signin", user);
 // export const updateUser = (user) => userAPI.put("/update", user);
 // export const deleteUser = (user) => userAPI.delete("/delete", user);

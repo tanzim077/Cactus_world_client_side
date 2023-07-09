@@ -1,38 +1,32 @@
-import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
-import React, { useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { loginUser } from "../../../features/slices/userSlice";
 import MenuBar from "../../Shared/MenuBar/MenuBar";
 import OtherButtons from "../../Shared/OtherButtons/OtherButtons";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const LogIn = () => {
-  const { loginUser, error } = useAuth();
-  const location = useLocation();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const history = useHistory();
-  const [loginData, setLoginData] = useState({});
-
-  const emailHandle = (e) => {
-    const newLoginData = { ...loginData };
-    newLoginData.email = e.target.value;
-    setLoginData(newLoginData);
+  const dispatch = useDispatch();
+  const onSubmit = (data) => {
+    dispatch(loginUser(data)).then((res) => {
+      history.push("/dashboard");
+    });
   };
-
-  const passwordHandle = (p) => {
-    const newLoginData = { ...loginData };
-    newLoginData.password = p.target.value;
-    setLoginData(newLoginData);
-  };
-
-  const handleLogin = (e) => {
-    loginUser(loginData.email, loginData.password, location, history);
-    e.preventDefault();
-  };
-
   return (
     <div>
       <MenuBar />
       <div className="mx-3 myform">
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="col-lg-3 mx-auto myform">
             <h3 className="text-center">Log In</h3>
 
@@ -41,11 +35,9 @@ const LogIn = () => {
                 Email address
               </label>
               <input
-                type="email"
-                onBlur={emailHandle}
                 className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
+                type="email"
+                {...register("email")}
               />
             </div>
 
@@ -54,12 +46,11 @@ const LogIn = () => {
                 Password
               </label>
               <input
-                type="password"
-                onBlur={passwordHandle}
                 className="form-control"
-                id="exampleInputPassword1"
+                type="password"
+                {...register("password")}
               />
-              <p className="text-danger">{error}</p>
+              {/* <p className="text-danger">{errors}</p> */}
             </div>
             <div className="d-flex justify-content-center">
               <button type="submit" className="btn btn-primary text-center">

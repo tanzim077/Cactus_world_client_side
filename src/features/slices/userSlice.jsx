@@ -8,7 +8,7 @@
  */
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { SignUpAPI } from "../../api/usersAPI/userAPI";
+import { SignInAPI, SignUpAPI } from "../../api/usersAPI/userAPI";
 
 const initialState = {
   isLoading: false,
@@ -29,6 +29,18 @@ export const createUser = createAsyncThunk(
   }
 );
 
+export const loginUser = createAsyncThunk(
+  "user/loginUser",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await SignInAPI(data);
+      return response;
+    } catch (error) {
+      return rejectWithValue({ message: error.response.data.message });
+    }
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -40,9 +52,20 @@ const userSlice = createSlice({
       })
       .addCase(createUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.users = action.payload;
+        state.user = action.payload;
       })
       .addCase(createUser.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.isLoading = false;
+      })
+      .addCase(loginUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
         state.error = action.payload.message;
         state.isLoading = false;
       });
